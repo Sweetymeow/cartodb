@@ -98,7 +98,7 @@ DESC
         u.password = password
         u.password_confirmation = password
         if !u.save
-          rais u.errors.inspect
+          raise u.errors.inspect
         else
           puts "Password changed"
         end
