@@ -1,5 +1,5 @@
 <%= content_for(:css) do %>
-  <% if !Rails.env.production? %>
+  <% if ( !Rails.env.production? || offline_mode? ) %>
     <%= stylesheet_link_tag 'cartodb.css', 'public_map.css' %>
   <% else %>
     <link rel="stylesheet" href="//cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/themes/css/cartodb.css" />
@@ -108,6 +108,7 @@
             </div>
           </div>
 
+          <% unless offline_mode? %>
           <div class="comments embed-left-col">
             <div class="content">
               <div id="disqus_thread"></div>
@@ -126,6 +127,7 @@
               <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript" class="no_script">comments powered by Disqus.</a></noscript>
             </div>
           </div>
+          <% end %>
 
         </div>
       </div>
@@ -215,7 +217,7 @@
 
   </script>
   
-  <% if !Rails.env.production? %>
+  <% if ( !Rails.env.production? || offline_mode? ) %>
     <%= javascript_include_tag 'cdb.js', 'templates.js', 'public_map' %>
   <% else %>
     <script src="//cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/cartodb.js"></script>

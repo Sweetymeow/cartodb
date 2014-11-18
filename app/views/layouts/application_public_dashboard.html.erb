@@ -23,7 +23,7 @@
     <meta name="twitter:image" content="<%= @avatar_url %>">
     <meta name="twitter:url" content="<%= request.fullpath %>" />
     
-    <% if !Rails.env.production? %>
+    <% if ( !Rails.env.production? || offline_mode? ) %>
       <%= stylesheet_link_tag "cartodb.css", "public_dashboard" %>
     <% else %>
       <%= stylesheet_link_tag "public_dashboard" %>

@@ -5,7 +5,7 @@
   <!-- <script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=false"></script> -->
 <% end %>
 
-<% if !Rails.env.production? %>
+<% if ( !Rails.env.production? || offline_mode? ) %>
   <%= javascript_include_tag 'cdb.js' %>
 <% else %>
   <script src="//cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/cartodb.js"></script>

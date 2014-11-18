@@ -209,6 +209,11 @@ module ApplicationHelper
     "/api/v2/viz/#{visualization.id}/viz"
   end #v2_vizjson_url
 
+  def offline_mode?
+    activate = Cartodb.config.fetch(:offline_mode, false)
+    activate == true
+  end
+
   # TODO reactivate in order to allow CartoDB plugins
   # to inject content into the CartoDB admin UI
   # def content_from_plugins_for(hook)
